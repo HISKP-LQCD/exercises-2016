@@ -38,6 +38,8 @@ precision in π.
 
 Running it on my Core i5-2520M laptop, I get:
 
+    $ bash compile.bash
+    $ time ./pi
     π = 3.1415854360000001755
     29.45user 0.08system 0:07.73elapsed 381%CPU (0avgtext+0avgdata 1784maxresident)k
     0inputs+0outputs (0major+85minor)pagefaults 0swaps
@@ -45,13 +47,14 @@ Running it on my Core i5-2520M laptop, I get:
 It takes about 7.7 seconds and uses, on average 3.81 of the 4 threads that the
 system supports. Whether this depends on Intel's HyperThreading, weaknesses in OpenMP or something else, I don't know. At least it is faster than the single threaded version:
 
-    time env OMP_NUM_THREADS=1 ./pi
+    $ time env OMP_NUM_THREADS=1 ./pi
     π = 3.1415832359999997792
     14.61user 0.00system 0:14.61elapsed 99%CPU (0avgtext+0avgdata 1704maxresident)k
     0inputs+0outputs (0major+139minor)pagefaults 0swaps
 
 You see that only 0.99 cores are used. The execution time has only doubled, the `user` time is halved! This means that the version with four threads already has a lot of overhead! Running it again with two threads gives the following:
 
+    $ time env OMP_NUM_THREADS=2 ./pi
     π = 3.1415818519999998415
     15.39user 0.00system 0:07.72elapsed 199%CPU (0avgtext+0avgdata 1708maxresident)k
     0inputs+0outputs (0major+142minor)pagefaults 0swaps
