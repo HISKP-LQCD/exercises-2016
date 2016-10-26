@@ -61,9 +61,10 @@ You see that only 0.99 cores are used. The execution time has only doubled, the 
 
 Just the 7.7 seconds but 15 seconds of `user` time. So we can deduce from this
 that the SMT (Intel calls it HyperThreading) does not really help anything, it
-just creates overhead. This might be because we only do simple operations
-(addition and multiplication) here, those operations do not take many cycles;
-nothing else can be run in parallel on the *same* core, really.
+just creates overhead. See how the CPU usage is now at 1.99 cores which is very
+nice. This might be because we only do simple operations (addition and
+multiplication) here, those operations do not take many cycles; nothing else
+can be run in parallel on the *same* core, really.
 
 The results are also a bit different! This is because a each thread has a
 different random seed. Therefore it is a difference whether one generator
