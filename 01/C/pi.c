@@ -1,12 +1,5 @@
 // Copyright © 2016 Martin Ueding <dev@martin-ueding.de>
 
-// Computation of pi using the standard Monte Carlo method. Uses OpenMP for
-// acceleration.
-
-// Compile with:
-//
-// gcc -Wall -Wpedantic -fopenmp -O3 pi.c -o pi
-
 #include <omp.h>
 
 #include <stdint.h>
