@@ -10,11 +10,16 @@ TODO Analytic part
 See the program `accept-reject.r` for an implementation. For 10000 numbers
 generated, the average number of trials is given as 1.2722.
 
+The QQ-plot looks reasonable:
+
+![](qqplot2.png)
+
 ## Implementation of Second Alternative
 
 The second alternative does the computation differently but still has an
 accept-reject step in it. See `exponential.r` for the implementation.
 
-As one can see in the QQ-plot, the results are not that good (or my implementation is incorrect):
+As one can see in the QQ-plot, the results are not that good (or my
+implementation is incorrect):
 
-![](qqplot-1.png)
+![](qqplot2.png)

@@ -12,8 +12,8 @@ myprint = function(varname, var) {
 number_of_generations = function() {
     iterations = 0
     repeat {
-        u = runif(1)
-        v = runif(1)
+        u = runif(1, min=-1, max=1)
+        v = runif(1, min=-1, max=1)
 
         iterations = iterations + 1
 
@@ -36,8 +36,8 @@ myprint('average_number', average_number)
 # Define the function again, this time it returns an actual data type
 box_muller_alternative_1 = function() {
     repeat {
-        u = runif(1)
-        v = runif(1)
+        u = runif(1, min=-1, max=1)
+        v = runif(1, min=-1, max=1)
 
         s = u^2 + v^2
 
@@ -54,7 +54,7 @@ box_muller_alternative_1 = function() {
 }
 
 # Draw a bunch of samples
-samples = replicate(10000, box_muller_alternative_1())
+samples = matrix(replicate(10000, box_muller_alternative_1()), nrow=1)
 
 # Make a quantile-quantile plot which the actual against the theoretical
 # quantiles. That should quickly tell whether the resulting numbers are sampled
