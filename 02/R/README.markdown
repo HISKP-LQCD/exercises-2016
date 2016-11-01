@@ -12,7 +12,7 @@ generated, the average number of trials is given as 1.2722.
 
 The QQ-plot looks reasonable:
 
-![](qqplot2.png)
+![](qqplot1.png)
 
 ## Implementation of Second Alternative
 
