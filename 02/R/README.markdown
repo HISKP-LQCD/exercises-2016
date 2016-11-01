@@ -5,12 +5,15 @@
 The first algorithm contains an accept/reject step. It is asked to compute the
 average number of trials, this is related to the acceptance rate.
 
-TODO Analytic part
-
 See the program `accept-reject.r` for an implementation. For 10000 numbers
-generated, the average number of trials is given as 1.2722.
+generated, the average number of trials is given as 1.2722. Given that the
+error is to be about 1%, this is in great agreement with the analytic
+expectation of 1.27324. Derivation is the following:
 
-The QQ-plot looks reasonable:
+![](analytic-part.png)
+
+I have also implemented this example (although not explicitly asked, I guess).
+It seems to produce sensible results, as can be seen in the QQ-plot:
 
 ![](qqplot1.png)
 
