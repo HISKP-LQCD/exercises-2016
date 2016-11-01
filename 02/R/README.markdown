@@ -22,8 +22,7 @@ It seems to produce sensible results, as can be seen in the QQ-plot:
 The second alternative does the computation differently but still has an
 accept-reject step in it. See `exponential.r` for the implementation.
 
-As one can see in the QQ-plot, the results are not that good (or my
-implementation is incorrect):
+As one can see in the QQ-plot, the results are also satisfactory:
 
 ![](qqplot2.png)
 

@@ -17,7 +17,7 @@ box_muller_alternative_2 = function() {
 
     # Randomly determine the sign and return that value.
     u = runif(1)
-    x = sign(2 * u - 1) * y2
+    x = sign(2 * u - 1) * y1
     return(x)
 }
 
