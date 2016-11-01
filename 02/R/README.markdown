@@ -23,3 +23,7 @@ As one can see in the QQ-plot, the results are not that good (or my
 implementation is incorrect):
 
 ![](qqplot2.png)
+
+# Uniform Sampling on the Sphere
+
+[Hammer-Aitoff projection](https://en.wikipedia.org/wiki/Hammer_projection)
