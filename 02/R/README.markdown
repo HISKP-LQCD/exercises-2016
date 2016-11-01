@@ -26,4 +26,36 @@ implementation is incorrect):
 
 # Uniform Sampling on the Sphere
 
-[Hammer-Aitoff projection](https://en.wikipedia.org/wiki/Hammer_projection)
+The uniform sampling on the unit circle (2-sphere) is implemented in
+`sphere.r`. The results can be displayed in a straightforward way:
+
+![](sphere-1.png)
+
+For the unit sphere (3-sphere), it is not that easy. Just plotting `x` and `y`
+in a scatter plot gives this:
+
+![](sphere-2.png)
+
+It is hard to tell whether this is correct. One would expect that the density
+at the edges is higher but our eye is not at judging this quantitatively.
+
+We can use the area preserving [Hammer-Aitoff
+projection](https://en.wikipedia.org/wiki/Hammer_projection) to project the
+surface of the 3-sphere onto a plane. Then it looks like this:
+
+![](sphere-3.png)
+
+Sampling in the bulk of an n-sphere is also possible by generating a new radius
+and adjusting for the Jacobian of that dimension. The result for the bulk of a
+2-sphere (disk) looks like this:
+
+![](sphere-4.png)
+
+Although we already know that makes little sense to plot the projection of 3D →
+2D space by omitting the `z` component, this is a simple way to at least take a
+look at the bulk of the 3D sampling:
+
+![](sphere-5.png)
+
+If one had a proper volume-to-area mapping, one could probably also make a nice
+2D picture out of this.
