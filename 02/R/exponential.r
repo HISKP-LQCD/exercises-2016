@@ -4,7 +4,7 @@
 # Licensed under the MIT license.
 
 box_muller_alternative_2 = function() {
-    # Sample for the exponential distribution until a suitable `y2` has been
+    # Sample from the exponential distribution until a suitable `y2` has been
     # found.
     repeat {
         y1 = rexp(1)
