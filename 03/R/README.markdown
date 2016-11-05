@@ -50,4 +50,47 @@ tent function is not suitable:
 
 ![](plots-1-9.png)
 
+### Timings
+
+| Method | User | System | Wall |
+| --- | --- | --- | --- |
+| Inverse | 0.022 | 0 | 0.022 |
+| Logistic | 0.206 | 0.001 | 0.209 |
+| Tent | 0.698 | 0 | 0.708 |
+
+One can see that the standard method of inverse cdf is the fastest here. The
+tent function seems to be the slowest for some reason, perhaps because of the
+branching `x <= 1/2`?
+
+## Cauchy Distribution
+
+The original pdf is the following:
+
+![](plots-2-1.png)
+
+### Inverse Function Method
+
+The inverse cdf:
+
+![](plots-2-2.png)
+
+Sampling with that inverse cdf gives satisfactory results:
+
+![](plots-2-3.png)
+
+### Ratio Method
+
+The ratio method also gives good looking results:
+
+![](plots-2-4.png)
+
+### Timings
+
+| Method | User | System | Wall |
+| --- | --- | --- | --- |
+| Inverse | 0.024 | 0 | 0.024 |
+| Ratio | 0.0210 | 0.021 |
+
+Both methods have comparable complexity.
+
 <!-- vim: set spell tw=79 : -->
