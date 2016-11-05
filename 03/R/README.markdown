@@ -89,7 +89,7 @@ The ratio method also gives good looking results:
 | Method | User | System | Wall |
 | --- | --- | --- | --- |
 | Inverse | 0.024 | 0 | 0.024 |
-| Ratio | 0.0210 | 0.021 |
+| Ratio | 0.021 | 0 | 0.021 |
 
 Both methods have comparable complexity.
 
