@@ -93,4 +93,16 @@ The ratio method also gives good looking results:
 
 Both methods have comparable complexity.
 
+## Accept-Reject
+
+The original function (red) as well as the majorizing function (black):
+
+![](plots-3-1.png)
+
+One sees that indeed the majorizing function has a higher value at each point.
+
+Performing the accept-reject algorithm, we obtain a proper distribution:
+
+![](plots-3-2.png)
+
 <!-- vim: set spell tw=79 : -->
