@@ -1,8 +1,19 @@
 # Week 4
 
-## Weather
+## 2. Pseudo Random Numbers
 
-I have solved this in one in Python, see [weather.py](weather.py).
+Depending on the value of α, you get different widths of the distribution:
+
+![](plots-prng-1.png)
+![](plots-prng-2.png)
+![](plots-prng-3.png)
+![](plots-prng-4.png)
+
+## 3. Weather
+
+I have solved this in one in Python, see [weather.py](weather.py). The data had
+to be normalized first because there were `***` in there. Reading these into R
+caused some troubles as well. I ended up deleting the first and last lines.
 
 As one can see from the p-values, the quadratic fit is the best one:
 
