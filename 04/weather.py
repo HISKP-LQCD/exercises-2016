@@ -42,7 +42,7 @@ def main():
     years = data[:, 0]
     temps = data[:, 1:13]
     means = np.mean(temps, axis=1)
-    stds = np.std(temps, axis=1)
+    stds = np.std(temps, axis=1) / np.sqrt(12)
 
     fig = pl.figure()
     ax = fig.add_subplot(1, 1, 1)
@@ -63,7 +63,7 @@ def main():
         chi_sq = np.sum(residuals**2 / stds**2)
         dof = len(years) - len(popt) - 1
         p_value = 1 - stats.chi2.cdf(chi_sq, dof)
-        print('| {} | {:.2g} | {:.2g} | {:.2g} |'.format(degree, chi_sq, chi_sq/dof, p_value))
+        print('| {} | {:.4g} | {:.4g} | {:.4g} |'.format(degree, chi_sq, chi_sq/dof, p_value))
 
     ax.set_title('Weather Data Fit')
     ax.set_xlabel('Year')

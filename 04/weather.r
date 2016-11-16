@@ -13,7 +13,7 @@ means = rowMeans(temps)
 plot(years, means)
 
 # Linear fit.
-model = nls(means ~ p1, start=list(p1=0))
+model = lm(means ~ years)
 
-attributes(model)
-model$m
+summary(model)
+str(model)
