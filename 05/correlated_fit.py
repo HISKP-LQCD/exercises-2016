@@ -10,6 +10,7 @@ import matplotlib.pyplot as pl
 import numpy as np
 import scipy.optimize as op
 
+import bootstrap
 
 def dandify_axes(ax, legend=False):
     ax.grid(True)
@@ -34,11 +35,14 @@ def make_chi_sq(z, cov):
         a = param[-1]
         z_minus_f = z - f(t, a)
 
-        a = z_minus_f.transpose()
+        a = z_minus_f
         b = cov_inv
-        c = z_minus_f
+        c = z_minus_f.transpose()
+        ab = a.dot(b)
 
-        return a.dot(b).dot(c)[0, 0]
+        result = ab.dot(c)[0, 0]
+
+        return result
 
     def chi_sq_gradient(param):
         t = param[:4]
@@ -50,10 +54,10 @@ def make_chi_sq(z, cov):
 
 def perform_fit(z, initial_guess, cov):
     chi_sq = make_chi_sq(z, cov)
-    print(initial_guess)
-    print(chi_sq(initial_guess))
+    #print(initial_guess)
     result = op.minimize(chi_sq, initial_guess)
-    print(result)
+    print(chi_sq(result.x))
+    #print(result)
 
     return result.x[-1]
 
@@ -84,15 +88,35 @@ def main():
     z_val = np.concatenate([x_val, y_val])
 
     initial_guess = np.concatenate([x_val, [0.2]])
-    a_val = perform_fit(z_val, initial_guess, cov)
+    a_central = perform_fit(z_val, initial_guess, cov)
 
     x = np.linspace(np.min(x_val), np.max(x_val), 100)
-    y = a_val * x**3
+    y = a_central * x**3
+
+    s = np.linalg.cholesky(cov).transpose()
+    a_dist = []
+    y_fit_dist = []
+    for sample in range(1000):
+        r = np.random.normal(0, 1, 8)
+        z = s.dot(r) + z_val
+
+        a = perform_fit(z, initial_guess, cov)
+
+        y_fit = a * x**3
+
+        a_dist.append(a)
+        y_fit_dist.append(y_fit)
+
+    a_val, a_err = bootstrap.average_and_std_arrays(a_dist)
+    y_fit_val, y_fit_err = bootstrap.average_and_std_arrays(y_fit_dist)
+
+    print(a_central, a_val, a_err)
 
     fig = pl.figure()
     ax = fig.add_subplot(1, 1, 1)
-    ax.errorbar(x_val, y_val, xerr=x_err, yerr=y_err, marker='+', linestyle='none')
-    ax.plot(x, y)
+    ax.errorbar(x_val, y_val, xerr=x_err, yerr=y_err, marker='+', linestyle='none', color='blue')
+    ax.fill_between(x, y + y_fit_err, y - y_fit_err, color='black', alpha=0.2)
+    ax.plot(x, y, color='red')
 
     ax.set_xlabel(r'$x$')
     ax.set_ylabel(r'$y$')
