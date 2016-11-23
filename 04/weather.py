@@ -55,6 +55,7 @@ def main():
 
     for func, degree in zip([poly0, poly1, poly2, poly3], itertools.count()):
         popt, pconv = op.curve_fit(func, years, means)
+        #print(popt)
 
         y = func(x, *popt)
         ax.plot(x, y, label=str(func))
