@@ -51,11 +51,15 @@ def make_chi_sq(z, cov):
 
     return chi_sq
 
+conv = {True: 0, False: 0}
+
 
 def perform_fit(z, initial_guess, cov):
     chi_sq = make_chi_sq(z, cov)
     #print(initial_guess)
     result = op.minimize(chi_sq, initial_guess)
+    conv[result.success] += 1
+    print(result.success)
     print(chi_sq(result.x))
     #print(result)
 
@@ -96,7 +100,7 @@ def main():
     s = np.linalg.cholesky(cov).transpose()
     a_dist = []
     y_fit_dist = []
-    for sample in range(1000):
+    for sample in range(100):
         r = np.random.normal(0, 1, 8)
         z = s.dot(r) + z_val
 
@@ -124,6 +128,8 @@ def main():
     dandify_figure(fig)
     fig.savefig('raw_data.pdf')
     fig.savefig('raw_data.png')
+
+    print(conv)
 
 
 def _parse_args():
